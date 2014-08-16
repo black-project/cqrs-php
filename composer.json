@@ -1,0 +1,19 @@
+{
+    "name": "black/cqrs-php",
+    "description": "Implements CQRS (for DDD in PHP)",
+    "type": "library",
+    "licence": "MIT",
+    "authors": [
+        {
+            "name": "Alexandre 'pocky' Balmes ",
+            "email": "alexandre@lablackroom.com",
+            "homepage": "http://www.lablackroom.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {"Black\\DDD\\": "src/Black/DDD/"}
+    }
+}
