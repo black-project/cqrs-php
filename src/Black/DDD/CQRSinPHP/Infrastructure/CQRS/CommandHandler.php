@@ -12,7 +12,7 @@
 namespace Black\DDD\CQRSinPHP\Infrastructure\CQRS;
 
 /**
- * Interface CommandInterface
+ * Interface CommandHandler
  *
  * Every write operations represent a command and these commands will be executed by using a Command Handler.
  *
@@ -21,7 +21,7 @@ namespace Black\DDD\CQRSinPHP\Infrastructure\CQRS;
  * @author  Alexandre 'pocky' Balmes <alexandre@lablackroom.com>
  * @license http://opensource.org/licenses/mit-license.php MIT
  */
-interface CommandInterface
+interface CommandHandler
 {
 
 } 
