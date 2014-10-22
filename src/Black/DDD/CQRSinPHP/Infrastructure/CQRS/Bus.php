@@ -25,9 +25,9 @@ final class Bus implements CommandBus
 
     /**
      * @param $commandClassName
-     * @param CommandHandlerInterface $handler
+     * @param CommandHandler $handler
      */
-    public function register($commandClassName, CommandHandlerInterface $handler)
+    public function register($commandClassName, CommandHandler $handler)
     {
         $this->handlers[$commandClassName] = $handler;
     }
@@ -47,4 +47,4 @@ final class Bus implements CommandBus
     {
         return $this->handlers;
     }
-} 
+}

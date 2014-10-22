@@ -24,4 +24,4 @@ namespace Black\DDD\CQRSinPHP\Infrastructure\CQRS;
 interface Command
 {
 
-} 
+}

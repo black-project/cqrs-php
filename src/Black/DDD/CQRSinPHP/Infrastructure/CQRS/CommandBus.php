@@ -25,4 +25,4 @@ namespace Black\DDD\CQRSinPHP\Infrastructure\CQRS;
 interface CommandBus
 {
     public function handle($command);
-} 
+}
