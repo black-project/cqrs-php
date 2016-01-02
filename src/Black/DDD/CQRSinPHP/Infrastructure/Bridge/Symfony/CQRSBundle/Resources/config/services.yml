@@ -1,0 +1,6 @@
+parameters:
+    "black_cqrs.infrastructure.command.bus.class": Black\DDD\CQRSinPHP\Infrastructure\CQRS\Bus
+
+services:
+    black_cqrs.infrastructure.command.bus:
+        class: "%black_cqrs.infrastructure.command.bus.class%"
