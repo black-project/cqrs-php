@@ -23,5 +23,5 @@ namespace Black\DDD\CQRSinPHP\Infrastructure\CQRS;
  */
 interface CommandHandler
 {
-
+    public function handle(Command $command);
 }

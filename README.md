@@ -25,16 +25,73 @@ constraint.
 Why?
 ----
 
-First, I want to create a folder structure for my continuous project based on semantic. This small library is a good
-start for my project and, even if some parts of this integration versus DDD rules are questionable, this work will work for
-a lot a project.
+I want to use a very basic library for CQRS without Event Sourcing. 
+There is one Bus, register your handler with the related command and go for it!
 
 Usage
 -----
 
-This project is a simple folder structure with interfaces (with simple contracts). Follow this structure and your project
- will follow DDD (not exactly true but your design will be fine).
+1 - Create a Command implementing `Black\DDD\CQRSinPHP\Infrastructure\CQRS\Command`  
+2 - Create an Handler implementing `Black\DDD\CQRSinPHP\Infrastructure\CQRS\CommandHandler`  
+3 - Register the Handler/Command to the Bus
 
+```php
+<?php
+
+$bus = new Black\DDD\CQRSinPHP\Infrastructure\CQRS\Bus;
+$handler = new My\Handler();
+
+$bus->register('My\Command', $handler);
+
+// Do stuff
+$command = new My\Command($foo, $bar);
+$bus->handle($command);
+```  
+
+SymfonyBundle
+---
+
+Register the bundle:
+
+``` php
+<?php
+// app/AppKernel.php
+
+public function registerBundles()
+{
+    $bundles = array(
+        // ...
+        new Black\Bundle\CQRSBundle\BlackCQRSBundle(),
+    );
+}
+```
+
+Declare your handler as a service and add this tag:
+
+```yaml
+services:
+    my.handler:
+        class: 'My\Handler'
+        tags:
+            - { name: black_cqrs.handler, command: "My\Command" }
+```
+
+And use it:
+
+```php
+<?php
+
+public function __construct(Black\DDD\CQRSinPHP\Infrastructure\CQRS\Bus $bus)
+{
+    $this->bus = $bus;
+}
+
+public function myFunction($foo, $bar)
+{
+    $command = new My\Command($foo, $bar);
+    $this->bus->handle($command);
+}
+```  
 
 Contributing
 ------------

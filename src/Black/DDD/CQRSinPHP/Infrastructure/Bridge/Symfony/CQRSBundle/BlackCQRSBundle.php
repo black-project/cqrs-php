@@ -12,7 +12,9 @@
 namespace Black\Bundle\CQRSBundle;
 
 use Black\Bundle\CQRSBundle\DependencyInjection\BlackCQRSExtension;
+use Black\Bundle\CQRSBundle\DependencyInjection\Compiler\BusCompilerPass;
 use Symfony\Component\Console\Application;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -21,6 +23,15 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class BlackCQRSBundle extends Bundle
 {
+    /**
+     * @param ContainerBuilder $container
+     */
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+        $container->addCompilerPass(new BusCompilerPass());
+    }
+
     /**
      * @return BlackCQRSExtension
      */
